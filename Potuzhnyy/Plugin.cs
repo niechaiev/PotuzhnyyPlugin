@@ -3,7 +3,6 @@ using System.Reflection;
 using BepInEx;
 using HarmonyLib;
 using LethalLib.Modules;
-using Potuzhnyy.Patches;
 using UnityEngine;
 
 namespace Potuzhnyy
@@ -14,11 +13,9 @@ namespace Potuzhnyy
         private readonly Harmony harmony = new Harmony(PluginInfo.PLUGIN_GUID);
         private void Awake()
         {
-            // Plugin startup logic
-            Logger.LogInfo($"Plugin {PluginInfo.PLUGIN_GUID} is loaded!");
+            Logger.LogInfo($"Plugin {PluginInfo.PLUGIN_GUID} is loading...");
             
             harmony.PatchAll(typeof(Plugin));
-            harmony.PatchAll(typeof(StartOfRoundPatch));
 
             RegisterItems();
         }
